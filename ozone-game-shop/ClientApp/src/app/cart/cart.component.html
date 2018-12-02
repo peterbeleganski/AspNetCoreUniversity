@@ -1,0 +1,18 @@
+<h1>Cart</h1>
+
+<div class="jumbotron" *ngIf="products.length > 0">
+    <div class="panel panel-primary" *ngFor="let product of products" style="width:50%">
+      <div class="panel-heading">
+        <p>{{product.title}}</p>
+      </div>
+      <div class="panel-body">
+        <img src="{{product.imageUrl}}" alt="" width="60" height="60" />
+        <strong><h2>{{product.price}} $</h2></strong>
+        <button class="btn btn-sm btn-danger" (click)="remove(product)">Remove</button>
+      </div>
+    </div>
+</div>
+
+<div class="jumbotron">
+  <h2>Total: {{sum}} $ to pay!</h2>
+</div>

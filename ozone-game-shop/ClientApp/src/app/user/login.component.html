@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-2">
+
+      <h2>Login Form</h2>
+      <div *ngIf="error" class="text-danger">
+        {{error}}
+      </div>
+      <form #loginForm="ngForm" (submit)="login()">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text"
+                 class="form-control"
+                 id="username"
+                 name="username"
+                 #email="ngModel"
+                 [(ngModel)]="user.username"
+                 required />
+
+        </div>
+        <div class="form-group">
+          <label for="username">EmailAddress</label>
+          <input type="text"
+                 class="form-control"
+                 id="EmailAddress"
+                 name="EmailAddress"
+                 #email="ngModel"
+                 [(ngModel)]="user.EmailAddress"
+                 required />
+
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password"
+                 class="form-control"
+                 id="password"
+                 name="password"
+                 [(ngModel)]="user.password"
+                 #password="ngModel"
+                 required />
+
+        </div>
+
+        <button class="btn btn-default btn-success"
+                type="submit">
+          Submit
+        </button>
+        <button class="btn btn-default btn-warning" type="reset">Clear</button>
+      </form>
+    </div>
+  </div>
+</div>

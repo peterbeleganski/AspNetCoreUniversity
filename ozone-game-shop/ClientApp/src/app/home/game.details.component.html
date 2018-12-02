@@ -1,0 +1,10 @@
+<h1>Game Details</h1>
+
+<div class="jumbotron">
+  <p>{{gameDetails.title}}</p>
+  <img src="{{gameDetails.imageUrl}}" alt="Img for product" style="width:30%"/>
+  <br />
+  <p class="text-justify">{{gameDetails.description}}</p>
+  <p class="text-warning">{{gameDetails.price}} $ <button class="btn btn-lg btn-info" (click)="addToCart(gameDetails)" >Buy</button></p>
+  <h3 *ngIf="isAdded" class="text-info">Game added to cart</h3>
+</div>
