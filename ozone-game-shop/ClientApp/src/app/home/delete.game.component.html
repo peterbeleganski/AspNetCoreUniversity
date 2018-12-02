@@ -1,4 +1,4 @@
-<h1>Welcome to Game Shope Uzone!</h1>
+<h1>Delete products!</h1>
 <br />
 <br />
 <div class="row">
@@ -6,9 +6,9 @@
   <div class="col-md-3" *ngFor="let game of games">
     <div class="jumbotron">
       <p><a href="/games/{{game.id}}">{{ game.title }}</a></p>
-      <img alt="Alternate Text" class="img-responsive" src="{{game.imageUrl}}" style="height:300px" />
       <br />
-      <p>{{game.price}} $ <span><button class="btn btn-sm btn-success" (click)="buy(game.id)">Add to cart</button></span></p>
+      <p>{{game.price}} $ <span><button class="btn btn-sm btn-danger" (click)="delete(game.id)">Delete</button></span></p>
     </div>
   </div>
+  <h2>{{returnedData}}</h2>
 </div>

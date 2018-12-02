@@ -16,20 +16,12 @@ namespace ozone_game_shop.Models
         [Required, MinLength(3), MaxLength(50)]
         public string Username { get; set; }
         
-        [Required, MinLength(3), MaxLength(50)]
         public string EmailAddress { get; set; }
 
-        public DateTime DateOfJoing
-        {
-            get
-            {
-                return dateOfJoin;
-            } set
-            {
-                value = DateTime.Now;
-            }
-        }
+        public DateTime DateOfJoing {get;set;}
 
         public string Password { get; set;}
+
+        public string Role { get; set; }
     }
 }

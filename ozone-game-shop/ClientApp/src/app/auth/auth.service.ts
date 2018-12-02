@@ -23,6 +23,11 @@ export class Auth {
     return window.localStorage.getItem('token') !== null;
   }
 
+  static isAdmin() {
+    if (Auth.getUser == {}) return;
+    return Auth.getUser().role === 'admin';
+  }
+
   static deauthenticateUser() {
     window.localStorage.removeItem('token');
   }

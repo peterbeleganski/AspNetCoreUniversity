@@ -3,6 +3,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { HttpClient, HttpBackend } from '@angular/common/http';
 import { GameDetails } from '../game.details'
 import { CartService } from '../cart.service';
+import { Auth } from '../auth/auth.service';
 
 @Component({
   selector: 'app-game-details-component',
@@ -11,6 +12,8 @@ import { CartService } from '../cart.service';
 export class GameDetailsComponent {
   public gameDetails: GameDetails;
   isAdded: boolean = false;
+  error: string;
+
   constructor(private route: ActivatedRoute,
     private urlRouter: Router,
     private http: HttpClient,
@@ -26,6 +29,7 @@ export class GameDetailsComponent {
   }
 
   addToCart(game: GameDetails) {
+    if (!Auth.isUserAuthenticated()) return this.error = "You must login first!";
     this.cartService.addProduct(game);
     this.isAdded = true;
   }

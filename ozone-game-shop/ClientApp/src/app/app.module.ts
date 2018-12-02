@@ -14,6 +14,9 @@ import { LoginComponent } from './user/login.component';
 import { CartService } from './cart.service';
 import { Auth } from './auth/auth.service';
 import { OptionsService } from './auth/options.service';
+import { RegisterComponent } from './user/register.component';
+import { CreateGameComponent } from './home/create.game.component';
+import { DeleteGameComponent } from './home/delete.game.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { OptionsService } from './auth/options.service';
     HomeComponent,
     CartComponent,
     LoginComponent,
-    GameDetailsComponent
+    GameDetailsComponent,
+    RegisterComponent,
+    CreateGameComponent,
+    DeleteGameComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -32,7 +38,10 @@ import { OptionsService } from './auth/options.service';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'cart', component: CartComponent },
       { path: 'games/:id', component: GameDetailsComponent },
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'add', component: CreateGameComponent },
+      { path: 'delete', component: DeleteGameComponent}
     ])
   ],
   providers: [CartService, Auth, OptionsService],

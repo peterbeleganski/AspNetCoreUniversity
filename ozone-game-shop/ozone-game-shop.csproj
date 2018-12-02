@@ -30,7 +30,11 @@
     <None Remove="ClientApp\src\app\auth\options.service.ts" />
     <None Remove="ClientApp\src\app\cart.service.ts" />
     <None Remove="ClientApp\src\app\game.details.ts" />
+    <None Remove="ClientApp\src\app\home\create.game.component.html" />
+    <None Remove="ClientApp\src\app\home\create.game.component.ts" />
+    <None Remove="ClientApp\src\app\home\delete.game.component.ts" />
     <None Remove="ClientApp\src\app\user\login.component.ts" />
+    <None Remove="ClientApp\src\app\user\register.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,7 +42,11 @@
     <TypeScriptCompile Include="ClientApp\src\app\auth\options.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\cart.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\game.details.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\home\create.game.component.html" />
+    <TypeScriptCompile Include="ClientApp\src\app\home\create.game.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\home\delete.game.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\user\login.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\user\register.component.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

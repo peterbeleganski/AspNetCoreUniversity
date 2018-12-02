@@ -13,7 +13,7 @@ export class OptionsService {
   }
 
   getUrl() {
-    return 'http://localhost:5000/';
+    return 'https://localhost:44366/';
   }
 
   checkForAuth() {
@@ -21,4 +21,5 @@ export class OptionsService {
       this.router.navigateByUrl('/login');
     }
   }
+
 }

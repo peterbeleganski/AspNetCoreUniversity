@@ -84,6 +84,7 @@ namespace ozone_game_shop.Controllers
 
         // POST: api/Games
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> PostGame([FromBody] Game game)
         {
             if (!ModelState.IsValid)
@@ -99,6 +100,7 @@ namespace ozone_game_shop.Controllers
 
         // DELETE: api/Games/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteGame([FromRoute] long id)
         {
             if (!ModelState.IsValid)

@@ -11,23 +11,48 @@
         </div>
         <div class='clearfix'></div>
         <div class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }'>
-            <ul class='nav navbar-nav'>
-                <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-                    <a [routerLink]='["/"]' (click)='collapse()'>
-                        <span class='glyphicon glyphicon-home'></span> Home
-                    </a>
-                </li>
-                <li [routerLinkActive]='["link-active"]'>
-                    <a [routerLink]='["/cart"]' (click)='collapse()'>
-                        <span class='glyphicon glyphicon-education'></span> Cart
-                    </a>
-                </li>
-                <li [routerLinkActive]='["link-active"]'>
-                    <a [routerLink]='["/fetch-games"]' (click)='collapse()'>
-                        <span class='glyphicon glyphicon-th-list'></span> Fetch games
-                    </a>
-                </li>
-            </ul>
+          <ul class='nav navbar-nav'>
+            <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-home'></span> Home
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]' *ngIf="isAuthenticated()">
+              <a [routerLink]='["/cart"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-shopping-cart'></span> Cart
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]' *ngIf="!isAuthenticated()">
+              <a [routerLink]='["/login"]' (click)='collapse()'>
+                <span class='	glyphicon glyphicon-tag'></span> Login
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]' *ngIf="!isAuthenticated()">
+              <a [routerLink]='["/register"]' (click)='collapse()'>
+                <span class='	glyphicon glyphicon-tag'></span> Register
+              </a>
+            </li>
+            <li [routerLinkActive]='["link"]' *ngIf="isAuthenticated()">
+              <a [routerLink]='[""]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-user'></span> Welcome, {{user.username}}
+              </a>
+            </li>
+            <li [routerLinkActive]='["link"]' *ngIf="isAdmin()">
+              <a [routerLink]='["/add"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-plus'></span> Add new Product
+              </a>
+            </li>
+            <li [routerLinkActive]='["link"]' *ngIf="isAdmin()">
+              <a [routerLink]='["/delete"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-minus'></span> Delete Product
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]' *ngIf="isAuthenticated()">
+              <a [routerLink]='["/logout"]' (click)='logout()'>
+                <span class='glyphicon glyphicon-remove'></span> Logout
+              </a>
+            </li>
+          </ul>
         </div>
     </div>
 </div>

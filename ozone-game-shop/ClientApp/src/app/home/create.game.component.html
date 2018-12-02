@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-2">
+      <h2>Create new Product</h2>
+      <h3 class="text-danger"><p *ngIf="error">{{error}}</p></h3>
+      <form method="post" #addGame="ngForm">
+        <div class="form-group">
+          <label for="make">Title</label>
+          <input type="text"
+                 class="form-control"
+                 id="title"
+                 name="title"
+                 #title="ngModel"
+                 [(ngModel)]="game.title"
+                 required />
+          <span [hidden]="title.valid || title.pristine">Title is required!</span>
+        </div>
+        <div class="form-group">
+          <label for="model">Price</label>
+          <input type="number"
+                 class="form-control"
+                 id="price"
+                 name="price"
+                 #price="ngModel"
+                 [(ngModel)]="game.price"
+                 required />
+          <span [hidden]="price.valid || price.pristine">Price is required!</span>
+        </div>
+        <div class="form-group">
+          <label for="image">IMG</label>
+          <input type="text"
+                 class="form-control"
+                 id="imageUrl"
+                 name="imageUrl"
+                 #imageUrl="ngModel"
+                 [(ngModel)]="game.imageUrl"
+                 required />
+          <span [hidden]="imageUrl.valid || imageUrl.pristine">Image is required!</span>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea type="text"
+                    class="form-control"
+                    id="description"
+                    name="description"
+                    #description="ngModel"
+                    [(ngModel)]="game.description"
+                    required></textarea>
+          <span [hidden]="description.valid || description.pristine">Description is required!</span>
+        </div>
+        <button class="btn btn-sm btn-success"
+                type="submit"
+                [disabled]="addGame.form.invalid" (click)="createGame()">
+          Create
+        </button>
+        <button class="btn btn-sm btn-warning" type="reset">Clear</button>
+      </form>
+      <div *ngIf="returnedData"> Game Added</div>
+    </div>
+  </div>
+</div>

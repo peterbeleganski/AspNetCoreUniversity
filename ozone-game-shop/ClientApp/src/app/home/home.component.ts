@@ -4,6 +4,7 @@ import { CartComponent } from '../cart/cart.component';
 import { GameDetails } from '../game.details';
 import { CartService } from '../cart.service';
 import { OptionsService } from '../auth/options.service';
+import { Auth } from '../auth/auth.service';
 
 @Component({
   providers: [],
@@ -13,6 +14,7 @@ import { OptionsService } from '../auth/options.service';
 export class HomeComponent {
   public games: Game[];
   baseUrl: string;
+  error: string;
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string, private cartService: CartService, private optService: OptionsService) {
     this.baseUrl = baseUrl;
@@ -22,6 +24,7 @@ export class HomeComponent {
   }
 
   buy(id: any) {
+    if (!Auth.isUserAuthenticated()) this.error = "You must login first!";
     this.http.get<GameDetails>(this.baseUrl + 'api/games/' + id).subscribe(game => {
       this.cartService.addProduct(game);
     }, error => console.log(error))

@@ -11,7 +11,7 @@ using ozone_game_shop.Models;
 
 namespace ozone_game_shop.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/login")]
     [ApiController]
     [AllowAnonymous]
     public class LoginController : ControllerBase
@@ -25,6 +25,7 @@ namespace ozone_game_shop.Controllers
             _context = context;
             _config = config;
         }
+
         [HttpPost]
         public IActionResult Login([FromBody]UserModel login)
         {
@@ -34,12 +35,14 @@ namespace ozone_game_shop.Controllers
             if (user != null)
             {
                 var tokenString = GenerateJSONWebToken(user);
-                response = Ok(new { token = tokenString });
+                response = Ok(new { token = tokenString,
+                    user = user
+            });
             }
 
             return response;
         }
-
+        
         private string GenerateJSONWebToken(UserModel userInfo)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
@@ -71,7 +74,7 @@ namespace ozone_game_shop.Controllers
 
             foreach(UserModel currUser in users)
             {
-                if(currUser.Password.Equals(login.Password) && currUser.Username.Equals(login.Username))
+                if (currUser.Password.Equals(login.Password) && currUser.Username.Equals(login.Username))
                 {
                     user = currUser;
                 }

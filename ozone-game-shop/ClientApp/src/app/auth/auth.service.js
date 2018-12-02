@@ -24,6 +24,11 @@ var Auth = /** @class */ (function () {
     Auth.isUserAuthenticated = function () {
         return window.localStorage.getItem('token') !== null;
     };
+    Auth.isAdmin = function () {
+        if (Auth.getUser == {})
+            return;
+        return Auth.getUser().role === 'admin';
+    };
     Auth.deauthenticateUser = function () {
         window.localStorage.removeItem('token');
     };

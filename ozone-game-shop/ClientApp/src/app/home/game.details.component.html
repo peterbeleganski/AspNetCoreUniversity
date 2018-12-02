@@ -7,4 +7,5 @@
   <p class="text-justify">{{gameDetails.description}}</p>
   <p class="text-warning">{{gameDetails.price}} $ <button class="btn btn-lg btn-info" (click)="addToCart(gameDetails)" >Buy</button></p>
   <h3 *ngIf="isAdded" class="text-info">Game added to cart</h3>
+  <h3 *ngIf="error" class="text-danger">{{error}}</h3>
 </div>

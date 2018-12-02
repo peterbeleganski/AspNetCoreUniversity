@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-2">
+
+      <h2>Register Form</h2>
+      <form #registerForm="ngForm" (submit)="register()">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text"
+                 class="form-control"
+                 id="username"
+                 name="username"
+                 #username="ngModel"
+                 [(ngModel)]="user.username"
+                 required />
+          <span [hidden]="username.valid || username.pristine">Username is required!</span>
+        </div>
+
+        <div class="form-group">
+          <label for="EmailAddress">EmailAddress</label>
+          <input type="text"
+                 class="form-control"
+                 id="EmailAddress"
+                 name="EmailAddress"
+                 #EmailAddress="ngModel"
+                 [(ngModel)]="user.EmailAddress"
+                 required />
+          <span [hidden]="EmailAddress.valid || EmailAddress.pristine">EmailAddress is required!</span>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password"
+                 class="form-control"
+                 id="password"
+                 name="password"
+                 [(ngModel)]="user.password"
+                 #password="ngModel"
+                 required />
+          <span [hidden]="password.valid || password.pristine">Password is required!</span>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password"
+                 class="form-control"
+                 id="confirmPassword"
+                 name="confirmPassword"
+                 #confirmPassworod="ngModel"
+                 [(ngModel)]="user.confirmPassword"
+                 required />
+          <span [hidden]="password.value === confirmPassworod.value || confirmPassworod.pristine">Passwords do not match!</span>
+        </div>
+
+        <button class="btn btn-default btn-success"
+                type="submit"
+                [disabled]="password.value !== confirmPassworod.value || registerForm.form.invalid">
+          Submit
+        </button>
+        <button class="btn btn-default btn-warning" type="reset">Clear</button>
+      </form>
+      <h1 *ngIf="returnedData">{{returnedData}}</h1>
+    </div>
+  </div>
+</div>
