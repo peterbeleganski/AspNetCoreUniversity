@@ -50,7 +50,6 @@ namespace ozone_game_shop.Controllers
 
             var claims = new[] {
              new Claim(JwtRegisteredClaimNames.Sub, userInfo.Username),
-             new Claim(JwtRegisteredClaimNames.Email, userInfo.EmailAddress),
              new Claim("DateOfJoing", userInfo.DateOfJoing.ToString("yyyy-MM-dd")),
              new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };

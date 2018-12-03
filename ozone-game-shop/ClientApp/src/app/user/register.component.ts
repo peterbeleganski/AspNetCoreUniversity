@@ -24,7 +24,7 @@ export class RegisterComponent {
   register() {
     console.log(this.user)
     this.http
-      .post<Response>('https://localhost:44366/api/register', this.user)
+      .post<Response>(Auth.getUrl() +'register', this.user)
       .toPromise()
       .then(data => {
         this.returnedData = data.message;

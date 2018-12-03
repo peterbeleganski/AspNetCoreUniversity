@@ -49,6 +49,7 @@ namespace ozone_game_shop.Controllers
 
         // PUT: api/Games/5
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutGame([FromRoute] long id, [FromBody] Game game)
         {
             if (!ModelState.IsValid)

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { OptionsService } from '../auth/options.service';
+import { Auth } from '../auth/auth.service';
 
 @Component({
   selector: 'app-create-game',
@@ -14,13 +15,16 @@ export class CreateGameComponent {
   returnedData: any;
   constructor(private http: HttpClient, private route: Router, private options: OptionsService) {
     this.options.checkForAuth();
+    if (!Auth.isAdmin()) {
+      this.route.navigateByUrl('/')
+    }
   }
 
   createGame() {
     const headers = this.options.getOptions();
     console.log(this.game)
     this.http
-      .post('https://localhost:44366/api/games', (this.game), { headers: headers })
+      .post(Auth.getUrl() + 'games', (this.game), { headers: headers })
       .toPromise()
       .then(res => {
         this.returnedData = res;

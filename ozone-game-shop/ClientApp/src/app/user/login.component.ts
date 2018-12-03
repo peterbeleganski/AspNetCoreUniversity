@@ -30,7 +30,7 @@ export class LoginComponent {
   login() {
     console.log(this.user);
     this.http
-      .post<Response>('https://localhost:44366/api/login', this.user)
+      .post<Response>(Auth.getUrl() +'login', this.user)
       .subscribe(res => {
        
         const token = res.token;

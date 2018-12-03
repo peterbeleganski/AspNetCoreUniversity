@@ -6,6 +6,9 @@ var Auth = /** @class */ (function () {
     Auth.saveUser = function (user) {
         window.localStorage.setItem('user', JSON.stringify(user));
     };
+    Auth.getUrl = function () {
+        return "http://localhost:49682/api/";
+    };
     Auth.getUser = function () {
         var userJson = window.localStorage.getItem('user');
         if (userJson) {

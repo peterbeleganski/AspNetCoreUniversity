@@ -15,18 +15,22 @@ export class HomeComponent {
   public games: Game[];
   baseUrl: string;
   error: string;
+  addedToCart: boolean = false;;
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string, private cartService: CartService, private optService: OptionsService) {
     this.baseUrl = baseUrl;
-    http.get<Game[]>(baseUrl + 'api/games/', { headers: this.optService.getOptions() }).subscribe(games => {
+    http.get<Game[]>(Auth.getUrl() + 'games/', { headers: this.optService.getOptions() }).subscribe(games => {
       this.games = games;
     }, error => console.log(error));
   }
 
   buy(id: any) {
     if (!Auth.isUserAuthenticated()) this.error = "You must login first!";
-    this.http.get<GameDetails>(this.baseUrl + 'api/games/' + id).subscribe(game => {
+    this.http.get<GameDetails>(Auth.getUrl() + 'games/' + id).subscribe(game => {
       this.cartService.addProduct(game);
+      if (Auth.isUserAuthenticated()) {
+        this.addedToCart = true;
+      }
     }, error => console.log(error))
   }
 }

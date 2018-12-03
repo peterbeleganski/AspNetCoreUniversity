@@ -34,8 +34,7 @@
             </li>
             <li [routerLinkActive]='["link"]' *ngIf="isAuthenticated()">
               <a [routerLink]='[""]' (click)='collapse()'>
-                <span class='glyphicon glyphicon-user'></span> Welcome, {{user.username}}
-              </a>
+                <span class='glyphicon glyphicon-user'></span> Welcome <span *ngIf="user">{{user.username}}</span>              </a>
             </li>
             <li [routerLinkActive]='["link"]' *ngIf="isAdmin()">
               <a [routerLink]='["/add"]' (click)='collapse()'>

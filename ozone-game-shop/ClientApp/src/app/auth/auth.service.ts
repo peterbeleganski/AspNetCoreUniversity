@@ -2,6 +2,11 @@ export class Auth {
   static saveUser(user) {
     window.localStorage.setItem('user', JSON.stringify(user));
   }
+
+  static getUrl() {
+    return "http://localhost:49682/api/";
+  }
+
   static getUser() {
     const userJson = window.localStorage.getItem('user');
 

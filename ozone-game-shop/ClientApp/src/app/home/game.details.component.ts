@@ -21,7 +21,7 @@ export class GameDetailsComponent {
     private cartService: CartService) {
     this.route.params.subscribe(params => {
       let gameId = params.id;
-      this.http.get<GameDetails>(baseUrl + 'api/games/' + gameId)
+      this.http.get<GameDetails>(Auth.getUrl() +'games/' + gameId)
         .subscribe(result => {
           this.gameDetails = result;
         }, error => this.urlRouter.navigateByUrl('/'))
